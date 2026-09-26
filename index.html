@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: white;
+}
+
+.page {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+}
+
+.page.active {
+    display: flex;
+}
+
+h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 20px;
+}
+
+/* BALLOONS */
+
+.balloon-area {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.balloon {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: white;
+    left: 50%;
+    top: 95px;
+}
+
+.b1 {
+    background: #ff4d6d;
+    left: 10%;
+    top: 30%;
+}
+
+.b2 {
+    background: #4d96ff;
+    left: 30%;
+    top: 20%;
+}
+
+.b3 {
+    background: #ffd93d;
+    left: 50%;
+    top: 35%;
+}
+
+.b4 {
+    background: #6bcB77;
+    left: 70%;
+    top: 20%;
+}
+
+.b5 {
+    background: #c77dff;
+    left: 85%;
+    top: 35%;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+}
+
+.popped {
+    animation: pop 0.3s forwards !important;
+}
+
+@keyframes pop {
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* CAKE */
+
+.cake {
+    position: relative;
+    width: 260px;
+    height: 160px;
+    margin-top: 50px;
+}
+
+.layer {
+    position: absolute;
+    width: 260px;
+    height: 70px;
+    background: #8b4513;
+    border-radius: 15px;
+    bottom: 0;
+}
+
+.layer.top {
+    width: 220px;
+    height: 60px;
+    left: 20px;
+    bottom: 55px;
+    background: #ff8fab;
+}
+
+.cream {
+    position: absolute;
+    width: 220px;
+    height: 20px;
+    left: 20px;
+    bottom: 100px;
+    background: white;
+    border-radius: 50%;
+}
+
+/* CANDLES */
+
+.candles {
+    position: absolute;
+    top: -45px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.candle {
+    width: 18px;
+    height: 55px;
+    background: #4d96ff;
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.candle:nth-child(2) {
+    background: #ff4d6d;
+}
+
+.candle:nth-child(3) {
+    background: #ffd93d;
+}
+
+.flame {
+    width: 18px;
+    height: 25px;
+    background: orange;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -28px;
+    left: 0;
+    box-shadow: 0 0 15px orange;
+}
+
+.flame.off {
+    display: none;
+}
+
+/* FINAL PAGE */
+
+.final {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.final h1 {
+    font-size: 48px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.wish {
+    max-width: 700px;
+    padding: 20px;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #764ba2;
+    font-size: 18px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+
+    <h1>🎈 A Little Surprise 🎈</h1>
+    <p>Pop all the balloons to continue!</p>
+
+    <div class="balloon-area">
+
+        <div class="balloon b1"></div>
+        <div class="balloon b2"></div>
+        <div class="balloon b3"></div>
+        <div class="balloon b4"></div>
+        <div class="balloon b5"></div>
+
+    </div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+
+    <h1>🎂 Make a Wish!</h1>
+    <p>Turn off all the candles 🕯️</p>
+
+    <div class="cake">
+
+        <div class="candles">
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+        <div class="cream"></div>
+        <div class="layer top"></div>
+        <div class="layer"></div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL PAGE -->
+<section class="page final" id="page3">
+
+    <h1>🎉 Happy BirthdaY BANGARAM 🎉</h1>
+
+    <div class="wish">
+        <p>
+            THE GOOD THING IN MY LIFE IS MEETING YOU.I DONT KNOW HOW IT STARTS BUT 
+            THIS IS MEMORIBLE THING WHICH I NEVER FORGET IN MY LIFE.AGAIN I HEARTFULLY 
+            CONVEYING A VERY VERY VERY HAPPIEST BIRTHDAY . ❤️
+        </p>
+
+        <p>
+            May all your dreams come true and may this year
+            bring you lots of wonderful moments! ✨
+        </p>
+    </div>
+
+    <button onclick="location.reload()">
+        🔄 Experience Again
+    </button>
+
+</section>
+
+
+<script>
+
+const balloons = document.querySelectorAll(".balloon");
+const candles = document.querySelectorAll(".candle");
+
+let popped = 0;
+let candlesOff = 0;
+
+
+/* BALLOON POPPING */
+
+balloons.forEach(balloon => {
+
+    balloon.addEventListener("click", () => {
+
+        if (balloon.classList.contains("popped"))
+            return;
+
+        balloon.classList.add("popped");
+
+        popped++;
+
+        if (popped === balloons.length) {
+
+            setTimeout(() => {
+
+                document.getElementById("page1")
+                    .classList.remove("active");
+
+                document.getElementById("page2")
+                    .classList.add("active");
+
+            }, 700);
+        }
+    });
+
+});
+
+
+/* CANDLE TURN OFF */
+
+candles.forEach(candle => {
+
+    candle.addEventListener("click", () => {
+
+        const flame = candle.querySelector(".flame");
+
+        if (flame.classList.contains("off"))
+            return;
+
+        flame.classList.add("off");
+
+        candlesOff++;
+
+        if (candlesOff === candles.length) {
+
+            setTimeout(() => {
+
+                document.getElementById("page2")
+                    .classList.remove("active");
+
+                document.getElementById("page3")
+                    .classList.add("active");
+
+            }, 1000);
+
+        }
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+<div class="photos">
+<img src="158803.jpg" alt="Birthday memory">
